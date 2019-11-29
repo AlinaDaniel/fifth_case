@@ -1,6 +1,5 @@
 # Case #5
 
-
 # The program ...
 
 # Developers:   Zemtseva A. (%),
@@ -10,56 +9,42 @@
 
 import urllib.request
 
-# Choosing the language.
-print('Choose language/ Выберите язык.\n1) English/ Английский язык;\n2) '
-      'Russian/ Русский язык.')
-language = input('Input number/ Введите цифру: ')
+file = open('input.txt')
+line = file.readline()
+while line:
+    url = line
+    url = urllib.request.urlopen(url)
+    url = url.read()
+    text = str(url)
 
-while True:
-    if language == '1':
-        import eng_local as lc
+    part_name = text.find('player-name')
+    name = text[text.find('>', part_name) + 1:text.find('&', part_name)]
 
-        break
-    elif language == '2':
-        import rus_local as lc
+    text = text[text.find('TOTAL') + 5:]
+    text = text.replace("</", ' ')
+    text = text.replace("<td>", '')
+    text = text.replace("t", '')
+    text = text.replace("n", '')
+    text = text.replace("\\", '')
+    text = text.replace("d>", '')
+    text = text.replace(',', '')
 
-        break
-    print('Choose language/ Выберите язык./n1) English/ Английский язык;\n2) '
-          'Russian/ Русский язык.')
-    language = input('Input number/ Введите цифру: ')
+    ptr = text.find(' ')
+    COMP = text[ptr + 1:text.find(' ', ptr + 1)]
+    ptr = text.find(' ', ptr + 1)
+    ATT = text[ptr + 1:text.find(' ', ptr + 1)]
+    ptr = text.find(' ', text.find(' ', ptr + 1) + 1)
+    YDS = text[ptr + 1:text.find(' ', ptr + 1)]
+    ptr = text.find(' ', text.find(' ', text.find(' ', ptr + 1)) + 1)
+    TD = text[ptr + 1:text.find(' ', ptr + 1)]
+    ptr = text.find(' ', text.find(' ', ptr) + 1)
+    INT = text[ptr + 1:text.find(' ', ptr + 1)]
+    passer_rating = (((float(COMP) / float(ATT) - 0.3) * 5 + (float(YDS) / float(ATT) - 3) * 0.25 +
+                      (float(TD) / float(ATT)) * 20 + 2.375 - (float(INT) / float(ATT) * 25)) / 6) * 100
 
 
-url = 'http://www.nfl.com/player/brycepetty/2495443/profile'
-url = urllib.request.urlopen(url)
-url = url.read()
-text = str(url)
+    passer_rating = "{0:.2f}".format(passer_rating)
+    print('%2s %3s %4s %5s %6s %7s %8s' % (name, TD, INT, YDS, ATT, COMP, passer_rating))
+    line = file.readline()
 
-part_name = text.find('player-name')
-name = text[text.find('>', part_name)+1:text.find('&', part_name)]
-
-text = text[text.find('TOTAL')+5:]
-text = text.replace("</", ' ')
-text = text.replace("<td>", '')
-text = text.replace("t", '')
-text = text.replace("n", '')
-text = text.replace("\\", '')
-text = text.replace("d>", '')
-text = text.replace(',', '')
-
-ptr = text.find(' ')
-COMP = text[ptr+1:text.find(' ', ptr+1)]
-ptr = text.find(' ', ptr+1)
-ATT = text[ptr+1:text.find(' ', ptr+1)]
-ptr = text.find(' ', text.find(' ', ptr+1)+1)
-YDS = text[ptr+1:text.find(' ', ptr+1)]
-ptr = text.find(' ', text.find(' ', text.find(' ', ptr+1))+1)
-TD = text[ptr+1:text.find(' ', ptr+1)]
-ptr = text.find(' ', text.find(' ', ptr)+1)
-INT = text[ptr+1:text.find(' ', ptr+1)]
-
-print(name)
-print(TD)
-print(INT)
-print(YDS)
-print(ATT)
-print(COMP)
+file.close()
