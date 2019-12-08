@@ -11,6 +11,7 @@ import urllib.request
 
 file = open('input.txt')
 line = file.readline()
+out_file = open('output.txt', 'w')
 while line:
     url = line
     url = urllib.request.urlopen(url)
@@ -44,7 +45,8 @@ while line:
 
 
     passer_rating = "{0:.2f}".format(passer_rating)
-    print('%2s %3s %4s %5s %6s %7s %8s' % (name, TD, INT, YDS, ATT, COMP, passer_rating))
+    out_file.write('%2s %3s %4s %5s %6s %7s %8s' % (name, TD, INT, YDS, ATT, COMP, passer_rating))
+    out_file.write('\n')
     line = file.readline()
-
+out_file.close()
 file.close()
