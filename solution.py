@@ -52,6 +52,14 @@ while line:
                       (float(INT) / float(ATT) * 25)) / 6) * 100
 
     passer_rating = "{0:.2f}".format(passer_rating)
+    
+    name += ((20 - len(name)) * ' ')
+    COMP += ((7 - len(COMP)) * ' ')
+    ATT += ((7 - len(ATT)) * ' ')
+    YDS += ((7 - len(YDS)) * ' ')
+    TD += ((7 - len(TD)) * ' ')
+    INT += ((7 - len(INT)) * ' ')
+    passer_rating += ((7 - len(passer_rating)) * ' ')
     out_file.write('%2s %3s %4s %5s %6s %7s %8s' % (name, TD, INT, YDS, ATT, COMP, passer_rating))
     out_file.write('\n')
     line = file.readline()
