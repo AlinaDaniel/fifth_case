@@ -7,7 +7,7 @@
 # The program reads the URLs of pages describing the profile of each player from the NFL website.
 
 # Developers:   Zemtseva A. (%),
-#               Zaitseva A. (%),
+#               Zaitseva A. (30%),
 #               Daniel A.   (%).
 
 import urllib.request
