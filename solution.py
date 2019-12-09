@@ -10,12 +10,29 @@
 #               Zaitseva A. (%),
 #               Daniel A.   (%).
 
-
 import urllib.request
 
 file = open('input.txt')
 line = file.readline()
 out_file = open('output.txt', 'w')
+
+# Draw a table for the titles.
+name = 'NAME'
+COMP = 'COMP'
+ATT = 'ATT'
+YDS = 'YDS'
+INT = 'INT'
+TD = 'TD'
+passer_rating = 'PR'
+name += ((20 - len(name)) * ' ')
+COMP += ((7 - len(COMP)) * ' ')
+ATT += ((7 - len(ATT)) * ' ')
+YDS += ((7 - len(YDS)) * ' ')
+TD += ((7 - len(TD)) * ' ')
+INT += ((7 - len(INT)) * ' ')
+passer_rating += ((7 - len(passer_rating)) * ' ')
+out_file.write('%2s %3s %4s %5s %6s %7s %8s' % (name, TD, INT, YDS, ATT, COMP, passer_rating))
+out_file.write('\n')
 
 # The loop that changes a link to the player's page.
 while line:
