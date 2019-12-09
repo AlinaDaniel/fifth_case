@@ -10,6 +10,7 @@
 #               Zaitseva A. (30%),
 #               Daniel A.   (45%).
 
+
 import urllib.request
 
 file = open('input.txt')
