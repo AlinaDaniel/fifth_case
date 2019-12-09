@@ -40,9 +40,9 @@ while line:
     TD = text[ptr + 1:text.find(' ', ptr + 1)]
     ptr = text.find(' ', text.find(' ', ptr) + 1)
     INT = text[ptr + 1:text.find(' ', ptr + 1)]
+    # Passer rating counting.
     passer_rating = (((float(COMP) / float(ATT) - 0.3) * 5 + (float(YDS) / float(ATT) - 3) * 0.25 +
                       (float(TD) / float(ATT)) * 20 + 2.375 - (float(INT) / float(ATT) * 25)) / 6) * 100
-
 
     passer_rating = "{0:.2f}".format(passer_rating)
     out_file.write('%2s %3s %4s %5s %6s %7s %8s' % (name, TD, INT, YDS, ATT, COMP, passer_rating))
