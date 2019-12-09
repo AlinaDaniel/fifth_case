@@ -8,7 +8,7 @@
 
 # Developers:   Zemtseva A. (45%),
 #               Zaitseva A. (30%),
-#               Daniel A.   (%).
+#               Daniel A.   (45%).
 
 import urllib.request
 
@@ -16,7 +16,7 @@ file = open('input.txt')
 line = file.readline()
 out_file = open('output.txt', 'w')
 
-# Draw a table for the titles.
+# Drawing a table for the titles.
 name = 'NAME'
 COMP = 'COMP'
 ATT = 'ATT'
