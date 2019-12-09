@@ -6,7 +6,7 @@
 # ATT, COMP, YDS, TD, INT.
 # The program reads the URLs of pages describing the profile of each player from the NFL website.
 
-# Developers:   Zemtseva A. (%),
+# Developers:   Zemtseva A. (45%),
 #               Zaitseva A. (30%),
 #               Daniel A.   (%).
 
