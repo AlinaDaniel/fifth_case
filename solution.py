@@ -1,6 +1,10 @@
 # Case #5
 
-# The program ...
+# The program calculates Quarterback passer rating in American football.
+# The rating is calculated according to the formula proposed by the
+# National Football League (NFL). Five parameters are used for calculation:
+# ATT, COMP, YDS, TD, INT.
+# The program reads the URLs of pages describing the profile of each player from the NFL website.
 
 # Developers:   Zemtseva A. (%),
 #               Zaitseva A. (%),
@@ -52,7 +56,8 @@ while line:
                       (float(INT) / float(ATT) * 25)) / 6) * 100
 
     passer_rating = "{0:.2f}".format(passer_rating)
-    
+
+    # Create a table from the values in the file.
     name += ((20 - len(name)) * ' ')
     COMP += ((7 - len(COMP)) * ' ')
     ATT += ((7 - len(ATT)) * ' ')
@@ -63,5 +68,6 @@ while line:
     out_file.write('%2s %3s %4s %5s %6s %7s %8s' % (name, TD, INT, YDS, ATT, COMP, passer_rating))
     out_file.write('\n')
     line = file.readline()
+
 out_file.close()
 file.close()
